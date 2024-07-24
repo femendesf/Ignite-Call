@@ -1,0 +1,11 @@
+Nookies (https://www.npmjs.com/package/nookies)
+
+- Feito para trabalhar com cookies dentro do Next
+
+Instalar:
+
+npm i nookies
+
+Como o Nookies usa o lib Cookies que não tem tipagem para o Typescript, não funciona o autocomplete, para isso precisa ser instalado a tipagem:
+
+npm i @types/cookie -D
