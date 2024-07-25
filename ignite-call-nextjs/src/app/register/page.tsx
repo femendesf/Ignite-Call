@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { AxiosError } from "axios";
 
@@ -40,6 +40,7 @@ export default function Register(){
 
     const searchParams = useSearchParams()
     const query = searchParams.get('username')
+    const router = useRouter()
 
     // Atualiza o valor do campo username caso seja passado como query paramentro na URL
     useEffect(() => {
@@ -56,6 +57,8 @@ export default function Register(){
             name: data.username,
             username: data.username,
         })
+
+        await router.push('/register/connect-calendar')
        } catch (err) {
         
         if (err instanceof AxiosError && err?.response?.data?.message) {
@@ -105,7 +108,7 @@ export default function Register(){
                     )}
                 </label>
 
-                <Button type='submit'>
+                <Button type='submit' disabled={isSubmitting}>
                     Próximo passo
                     <ArrowRight/>
                 </Button>

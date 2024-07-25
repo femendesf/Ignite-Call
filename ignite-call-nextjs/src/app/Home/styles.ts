@@ -10,7 +10,7 @@ export const Container = styled('div', {
 })
 
 export const Hero = styled('div', {
-    maxWidht: 480,
+    maxWidth: 480,
     padding: '0 $10',
 
     [ `${Heading}`]: {

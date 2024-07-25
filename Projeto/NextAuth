@@ -1,0 +1,10 @@
+Next Auth (https://next-auth.js.org/):
+
+- Ótimo para projeto que o backend e frontend estão juntos, como é no caso do projeto co Next
+
+Link documentação autenticação com Google: 
+https://developers.google.com/identity/protocols/oauth2?hl=pt-br
+
+Link da API de autenticação Google: 
+https://console.cloud.google.com/apis/dashboard?hl=pt-br&pli=1&project=dauntless-arc-418304
+
