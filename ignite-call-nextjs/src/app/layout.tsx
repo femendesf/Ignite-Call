@@ -3,6 +3,8 @@ import { globalStyles } from "@/styles/global";
 import { getCssText } from "@ignite-ui/react";
 import { Roboto } from "next/font/google";
 
+import { SessionProvider } from "next-auth/react";
+
 globalStyles()
 
 const robotoNormal = Roboto({
@@ -18,7 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     
-    <html lang="en">
+    <SessionProvider>
+      <html lang="en">
       <head>
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} /> 
       </head>
@@ -26,5 +29,7 @@ export default function RootLayout({
       <body className={robotoNormal.className}>{children}</body>
       
     </html>
+    </SessionProvider>
+    
   );
 }
