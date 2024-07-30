@@ -11,6 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { AxiosError } from "axios";
 
+// Define o esquema do formulário de reserva de nome de usuário
 const registerFormSchema = z.object({
     username: z.string()
         .min(3, {message: 'Usuário precisa de pelo menos 3 letras'})
