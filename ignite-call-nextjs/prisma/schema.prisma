@@ -27,10 +27,10 @@ model User {
 // Para armazenar a integração de um usuario existente com algum provider (google, github e outros)
 model Account {
   id                  String  @id @default(cuid())
-  user_id             String  @map("user_id")
+  user_id             String
   type                String
   provider            String
-  provider_account_id String  @map("provider_account_id")
+  provider_account_id String
   refresh_token       String?
   access_token        String?
   expires_at          Int?

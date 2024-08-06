@@ -9,9 +9,9 @@ import { useSearchParams } from "next/navigation";
 
 
 export default function Register(){
+
     const session =  useSession()
-    
-    
+    console.log(session)
     async function handleConnectCalendar(){
         await signIn('google')
     }
@@ -38,15 +38,15 @@ export default function Register(){
 
                 <ConnectItem>
                     <Text>Google Calendar</Text>
-                    
+                  
                     {isSignedIn ? 
                         (<Button size='sm' disabled>
                             Conectado
-                            <Check/>>
+                            <Check/>
                         </Button> )
                         
 
-                        :(<Button variant='secondary' size='sm' onClick={handleConnectCalendar()}
+                        :(<Button variant='secondary' size='sm' onClick={handleConnectCalendar}
                         >
                             Conectar
                             <ArrowRight/>
