@@ -1,24 +1,31 @@
 'use client'
 
-import { Button, Heading, MultiStep, Text, TextArea } from "@ignite-ui/react";
+import { Avatar, Button, Heading, MultiStep, Text, TextArea } from "@ignite-ui/react";
 import { Container, Header } from "../../styles";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormAnnotation, ProfileBox } from "../styles";
+import { Session } from "next-auth";
+import { api } from "@/lib/axios";
+import { useRouter } from "next/navigation";
 
 const updateProfileSchema = z.object({
-    bio: z.string()
+    bio: z.string(),
 })
+
+type UpdateProfileProps = {
+    session: Session
+}
 
 type UpdateProfileData = z.infer<typeof updateProfileSchema>
 
 
-export function UpdateProfile({session}: any){
-
-    const sessionData = session.user
-    console.log(sessionData.name)
+export function UpdateProfile({session}: UpdateProfileProps){
+    
+    const {avatar_url, name} = session.user
+    const router = useRouter()
     const {
         register,
         formState: { isSubmitting },
@@ -28,7 +35,10 @@ export function UpdateProfile({session}: any){
     });
 
     async function handleRegisterForm(data: UpdateProfileData) {
-        
+        console.log(data)
+        await api.put('/users/profile', data)
+
+        await router.push(`/schedule/${session.user.username}`)
     }
     
     // OUTRA SOLUÇÃO PARA VERIFICAR SE O USUÁRIO ESTÁ AUTENTICADO
@@ -54,23 +64,24 @@ export function UpdateProfile({session}: any){
         <Container>
             <Header>
                 <Heading as='strong'>
-                    Bem-vindo ao Ignite Call!
+                    Defina sua disponibilidade
                 </Heading>
 
                 <Text>
-                    Precisamos de algumas informações para criar seu perfil! Ah, você pode editar essas informações depois.
+                    Por último, uma breve descrição e uma foto de perfil.
                 </Text>
 
-                <MultiStep size={4} currentStep={1} />
+                <MultiStep size={4} currentStep={4} />
             </Header>
 
             <ProfileBox as='form' onSubmit={handleSubmit(handleRegisterForm)}>
                 <label>
                     <Text size='sm'>Foto de perfil</Text>
+                    <Avatar src={avatar_url} alt={name}/>
                 </label>
 
                 <label>
-                    <Text size='sm'>Nome completo</Text>
+                    <Text size='sm'>Sobre você</Text>
                     <TextArea placeholder='Seu nome' {...register('bio')} />
                     <FormAnnotation size='sm'>
                         Fale um pouco sobre você. Isto será exibido em sua página pessoal.
@@ -78,7 +89,7 @@ export function UpdateProfile({session}: any){
                 </label>
 
                 <Button type='submit' disabled={isSubmitting}>
-                    Próximo passo
+                    Finalizar
                     <ArrowRight />
                 </Button>
             </ProfileBox>

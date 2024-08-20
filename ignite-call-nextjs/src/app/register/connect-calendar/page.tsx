@@ -5,17 +5,22 @@ import { Container, Header } from "../styles";
 import { ArrowRight, Check } from "phosphor-react";
 import { AuthError, ConnectBox, ConnectItem } from "./styles";
 import { signIn, useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 export default function ConnectCalendar(){
 
     const session =  useSession()
     console.log(session)
+
+    const router = useRouter()
     async function handleConnectCalendar(){
         await signIn('google')
     }
 
+    async function handleNavigateToNextStep(){
+        await router.push('/register/time-intervals')
+    }
     const searchParams = useSearchParams()
     const hasAuthError = searchParams.has('error')
     const isSignedIn = session.status === 'authenticated'
@@ -59,7 +64,7 @@ export default function ConnectCalendar(){
                         Falha ao conectar ao Google, verifique se você habilitou as permissões de acessio ao Google Calendar.
                     </AuthError>
                 )}
-                <Button type='submit' disabled={!isSignedIn}>
+                <Button onClick={handleNavigateToNextStep} type='submit' disabled={!isSignedIn}>
                     Próximo passo
                     <ArrowRight/>
                 </Button>
