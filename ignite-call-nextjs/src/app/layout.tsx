@@ -2,7 +2,7 @@
 import { globalStyles } from "@/styles/global";
 import { getCssText } from "@ignite-ui/react";
 import { Roboto } from "next/font/google";
-
+import '../lib/dayjs'
 import { SessionProvider } from "next-auth/react";
 
 globalStyles()
