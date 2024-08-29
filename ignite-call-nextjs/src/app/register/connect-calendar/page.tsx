@@ -11,7 +11,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function ConnectCalendar(){
 
     const session =  useSession()
-    console.log(session)
 
     const router = useRouter()
     async function handleConnectCalendar(){

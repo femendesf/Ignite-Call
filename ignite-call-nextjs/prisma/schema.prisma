@@ -22,11 +22,12 @@ model User {
   accounts      Account[]
   sessions      Session[]
   timeIntervals UserTimeInterval[]
+  Scheduling    Scheduling[]
 
   @@map("users")
 }
+// Para armazenar os dados do usuario
 
-// Para armazenar a integração de um usuario existente com algum provider (google, github e outros)
 model Account {
   id                  String  @id @default(cuid())
   user_id             String
@@ -46,8 +47,8 @@ model Account {
   @@unique([provider, provider_account_id])
   @@map("accounts")
 }
+// Para armazenar a integração de um usuario existente com algum provider (google, github e outros)
 
-// Cria uma sessão para cada maquina que o usuario acessar
 model Session {
   id            String   @id @default(cuid())
   session_token String   @unique @map("session_token")
@@ -57,6 +58,7 @@ model Session {
 
   @@map("sessions")
 }
+// Cria uma sessão para cada maquina que o usuario acessar
 
 model UserTimeInterval {
   id                    String @id @default(uuid())
@@ -69,3 +71,19 @@ model UserTimeInterval {
 
   @@map("user_time_intervals")
 }
+// Armazena os horarios disponiveis do usuario
+
+model Scheduling {
+  id           String   @id @default(uuid())
+  date         DateTime
+  name         String
+  email        String
+  observarions String?
+  created_at   DateTime @default(now())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("schedulings")
+}
+// Armazena os agendamentos do usuario

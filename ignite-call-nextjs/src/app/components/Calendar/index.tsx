@@ -15,7 +15,7 @@ interface CalendarWeek{
 type CalendarWeeks = CalendarWeek[];
 
 interface CalendarProps{
-    selectedDate?: Date
+    selectedDate: Date | null
     onDateSelected: (date: Date) => void;
 }
 
@@ -64,7 +64,7 @@ export function Calendar({selectedDate, onDateSelected} : CalendarProps){
 
         const calendarDays = [
             ...previousMonthFillArray.map((date) => {return {date, disabled: true}}),
-            ...daysInMonthArray.map((date) => {return {date, disabled: date.endOf('day').isBefore(new Date())}}),
+            ...daysInMonthArray.map((date) => {return {date, disabled: date.endOf('day').isBefore(new Date())}}),//desabilita os dias que já passaram
             ...nextMonthFillArray.map((date) => {return {date, disabled: true}})
         ]
 
@@ -87,8 +87,6 @@ export function Calendar({selectedDate, onDateSelected} : CalendarProps){
         return calendarWeeks
 
     },[currentDate])//quando a data mudar, o calendário é recalculado
-
-    console.log(calendarWeeks);
 
     return(
         <CalendarContainer>

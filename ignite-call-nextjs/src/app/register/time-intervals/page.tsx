@@ -67,8 +67,7 @@ export default function TimeIntervals(){
     const  router = useRouter()
     async function handleSetTimeIntervals(data: any){
         const {intervals} = data as TimeIntervalsFormOutput
-        console.log(intervals)
-
+    
         await api.post("/users/time-intervals", {
             intervals,
        });

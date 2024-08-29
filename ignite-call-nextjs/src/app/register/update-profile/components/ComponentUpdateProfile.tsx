@@ -35,7 +35,7 @@ export function UpdateProfile({session}: UpdateProfileProps){
     });
 
     async function handleRegisterForm(data: UpdateProfileData) {
-        console.log(data)
+       
         await api.put('/users/profile', data)
 
         await router.push(`/schedule/${session.user.username}`)
