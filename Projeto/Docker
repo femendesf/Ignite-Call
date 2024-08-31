@@ -1,0 +1,42 @@
+Instalando o Docker para lidar com o banco de dados na nossa aplicação.
+
+Projeto iniciado com Sqlite e depois com o uso do $queryRaw (arquivo api/users/slug/blocked-dates) é instalado no projeto o MYSql para lidar com as Raw Querys, que são SQL direto pro banco, pois com o uso do Raw Query o prisma nao esta convertendo automaticamente para um formato que funcione em todos os bancos de dados.
+
+
+Vamos usar o Docker para lidar com o MYSql na nossa maquina.
+
+Site do guia da instalação: https://efficient-sloth-d85.notion.site/Instalando-Docker-6290d9994b0b4555a153576a1d97bee2
+
+Depois de instalado, abrir o Docker e deixar rodando na maquina
+
+ - Executar o comando para rodar o MYSql no Docker:
+    docker run --name mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 mysql:latest
+
+ - Depois de subir o Sql, executar em outro terminal o comando para parar:
+    docker stop (nome do container)
+
+ - E rodar o container para verificar se esta tudo ok:
+    docker start (nome do container)
+
+ - Verificar container:
+    docker ps
+
+No projeto vai ser preciso configurar algumas coisas para o MYSQL funcionar
+
+ - Trocar no arquivo .env a URL de conexao:
+    DATABASE_URL='mysql://root:docker@localhost:33306/ignitecall' 
+
+    (nome do banco de dados usado)-(usuario)-(senha)-(porta padrão do mysql)-(nome para o banco de dados)
+
+Agora excluir o arquivo que tinha sido configurado com SQLite, no caso é o arquivo dev.db do PRISMA
+
+ - Alterar nome do provider no arquivo schema.prisma para o nome do banco de dados que vai ser usado:
+    'mysql'
+
+- Apagar pasta migrations do Prisma, pois foi criada com Sqlite
+
+No projeto caso seja executado após todo o proceso, vai dar erro ao tentar conectar no google. O erro acontece pq com os campos que são String no prisma com Mysql são convertidos pra VARCHAR com tamanho de 191 caracteres, mas tem campos que vai ser preciso ter mais de 191 caracters, para resolver isso tem que configurar cada campo:
+
+- Para os campos de texto que precisam ter mais de 191 caracteres, adicionar @db.(escolher o tamanho):
+    exemplo: bio String @db.Text
+
