@@ -63,7 +63,12 @@ export async function GET(req: NextRequest, { params }: { params: { slug: string
     })
 
     const availableTimes = possibleTimes.filter((time) => {
-        return !blockedTimes.some((blockedTime) => blockedTime.date.getHours() === time,)
+        const isTimeBlocked = blockedTimes.some((blockedTime) => blockedTime.date.getHours() === time,)
+
+        const isTimeInPast = referenceDate.set('hour', time).isBefore(new Date())
+
+        return !isTimeBlocked && !isTimeInPast
+
     })// filtra os horários disponíveis
 
     return NextResponse.json({ possibleTimes, availableTimes}, { status: 200 });
