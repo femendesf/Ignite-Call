@@ -1,6 +1,6 @@
 import { Calendar } from "@/app/components/Calendar";
 import { Container, TimePicker, TimePickerHeader, TimePickerItem, TimePickerList } from "./styles";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
 import { useParams } from "next/navigation";
 import { api } from "@/lib/axios";
@@ -11,7 +11,11 @@ interface Availability {
   availableTimes: number[];
 }
 
-export function CalendarStep() {
+interface CalendarStepProps {
+  onSelectDateTime: (date: Date) => void;
+}
+
+export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
 
   const [selectedDate, setSelectedDay] = useState<Date | null>(null)
 
@@ -55,6 +59,15 @@ export function CalendarStep() {
 
   // }, [selectedDate, username])
 
+  function handleSelectTime(hour: number){
+
+    const dateWithTime = dayjs(selectedDate).set('hour', hour).startOf('hour').toDate()
+
+    onSelectDateTime(dateWithTime)
+
+  }// função para selecionar o horário
+
+
   return(
     <Container isTimePickerOpen={isDateSelected}>
 
@@ -70,7 +83,11 @@ export function CalendarStep() {
           <TimePickerList>
             {availability?.possibleTimes.map((hour) => {
               return(
-                <TimePickerItem key={hour} disabled={!availability.availableTimes?.includes(hour)}>
+                <TimePickerItem
+                  key={hour} 
+                  disabled={!availability.availableTimes?.includes(hour)}
+                  onClick={() => handleSelectTime(hour)}
+                >
                   {String(hour).padStart(2, '0')}:00h
                 </TimePickerItem>
               )
