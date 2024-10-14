@@ -10,6 +10,8 @@ import { FormAnnotation, ProfileBox } from "../styles";
 import { Session } from "next-auth";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/navigation";
+import { NextSeo } from "next-seo";
+import React from "react";
 
 const updateProfileSchema = z.object({
     bio: z.string(),
@@ -61,38 +63,44 @@ export function UpdateProfile({session}: UpdateProfileProps){
     // // }
 
     return (
-        <Container>
-            <Header>
-                <Heading as='strong'>
-                    Defina sua disponibilidade
-                </Heading>
+        <>
+            {/* <NextSeo
+                title="Atualize seu perfil | Ignite Call"
+                noindex
+            /> */}
+            <Container>
+                <Header>
+                    <Heading as='strong'>
+                        Defina sua disponibilidade
+                    </Heading>
 
-                <Text>
-                    Por último, uma breve descrição e uma foto de perfil.
-                </Text>
+                    <Text>
+                        Por último, uma breve descrição e uma foto de perfil.
+                    </Text>
 
-                <MultiStep size={4} currentStep={4} />
-            </Header>
+                    <MultiStep size={4} currentStep={4} />
+                </Header>
 
-            <ProfileBox as='form' onSubmit={handleSubmit(handleRegisterForm)}>
-                <label>
-                    <Text size='sm'>Foto de perfil</Text>
-                    <Avatar src={avatar_url} alt={name}/>
-                </label>
+                <ProfileBox as='form' onSubmit={handleSubmit(handleRegisterForm)}>
+                    <label>
+                        <Text size='sm'>Foto de perfil</Text>
+                        <Avatar src={avatar_url} alt={name}/>
+                    </label>
 
-                <label>
-                    <Text size='sm'>Sobre você</Text>
-                    <TextArea placeholder='Seu nome' {...register('bio')} />
-                    <FormAnnotation size='sm'>
-                        Fale um pouco sobre você. Isto será exibido em sua página pessoal.
-                    </FormAnnotation>
-                </label>
+                    <label>
+                        <Text size='sm'>Sobre você</Text>
+                        <TextArea placeholder='Seu nome' {...register('bio')} />
+                        <FormAnnotation size='sm'>
+                            Fale um pouco sobre você. Isto será exibido em sua página pessoal.
+                        </FormAnnotation>
+                    </label>
 
-                <Button type='submit' disabled={isSubmitting}>
-                    Finalizar
-                    <ArrowRight />
-                </Button>
-            </ProfileBox>
-        </Container>
+                    <Button type='submit' disabled={isSubmitting}>
+                        Finalizar
+                        <ArrowRight />
+                    </Button>
+                </ProfileBox>
+            </Container>
+        </>
     )
 }

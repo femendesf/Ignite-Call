@@ -1,10 +1,12 @@
-import { Button, Text, TextInput} from "@ignite-ui/react";
+import React from "react";
+
 import { Form, FormAnnotation } from "./styles";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { Button, Text, TextInput } from "@ignite-ui/react";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const claimUsernameFormSchema = z.object({
@@ -12,7 +14,6 @@ const claimUsernameFormSchema = z.object({
         .min(3, {message: 'Digite pelo menos 3 letras'})
         .regex(/^([a-z\\-]+)$/i, {message: 'O usuário pode ter letras e hifens'})
         .transform(username => username.toLowerCase()),
-
 })
 
 type ClaimUsernameFormData= z.infer<typeof claimUsernameFormSchema>
@@ -34,6 +35,7 @@ export function ClaimUsernameForm(){
     }
     return(
         <>
+      
             <Form as='form' onSubmit={handleSubmit(handleClaimUserForm)}>
                 <TextInput
                     size="sm"
@@ -42,7 +44,7 @@ export function ClaimUsernameForm(){
                     {...register('username')}
                 />
 
-                <Button size="sm" type="submit" disabled={isSubmitting}>
+                <Button size="sm" type="submit" disabled={isSubmitting} style={{ borderRadius: '8px' }}>
                     Reservar
                     <ArrowRight/>
                 </Button>
