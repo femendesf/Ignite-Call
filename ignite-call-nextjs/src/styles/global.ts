@@ -13,4 +13,9 @@ export const globalStyles = globalCss({
         color: '$gray100',
         '-webkit-font-smoothing': 'antialiased', 
     },
+
+    button: {
+        borderRadius: '$md !important', // Aqui você pode usar os tokens de radii do Ignite UI, como $md ou qualquer outro
+      },
+
 })

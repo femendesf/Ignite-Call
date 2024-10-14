@@ -11,16 +11,6 @@ import { DefaultSeo } from "next-seo";
 globalStyles();
 
 export default function ClientProviders({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.id = 'stitches';
-    style.innerHTML = getCssText();
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style); // Limpa o estilo quando o componente é desmontado
-    };
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

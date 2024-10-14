@@ -117,7 +117,7 @@ export default function Register(){
                         )}
                     </label>
 
-                    <Button type='submit' disabled={isSubmitting} style={{ borderRadius: '8px' }} >
+                    <Button type='submit' disabled={isSubmitting} >
                         Próximo passo
                         <ArrowRight/>
                     </Button>
