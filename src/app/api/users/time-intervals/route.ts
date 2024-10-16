@@ -17,7 +17,7 @@ export async function POST(req: NextRequest){
 
     const data = await req.json();
 
-    const session = await getServerSession(buildNextAuthOptions);
+    const session = await getServerSession(buildNextAuthOptions());
 
     if(!session){
         return NextResponse.json({error: 'Usuário não autenticado'}, {status: 405});

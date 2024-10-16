@@ -9,7 +9,7 @@ export const metadata = {
 
 export default async function TesteUpdate(){
 
-    const session = await getServerSession(buildNextAuthOptions);
+    const session = await getServerSession(buildNextAuthOptions());
 
     if(!session){
         return (console.log('Usuário não autenticado'));

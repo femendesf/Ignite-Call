@@ -1,13 +1,13 @@
 import { PrismaAdapter } from "@/lib/Auth/prisma-adapter"
 import NextAuth, { NextAuthOptions } from 'next-auth'
-import GoogleProvider, {GoogleProfile} from 'next-auth/providers/google'
+import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
 
- const buildNextAuthOptions: NextAuthOptions = {
- 
+// Define the NextAuth options
+export const buildNextAuthOptions = (): NextAuthOptions => {
+  return {
     adapter: PrismaAdapter(),
 
     providers: [
-
       GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID ?? '',
         clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
@@ -34,23 +34,24 @@ import GoogleProvider, {GoogleProfile} from 'next-auth/providers/google'
 
     callbacks: {
       async signIn({ account }) {
-
-        if(!account?.scope?.includes('https://www.googleapis.com/auth/calendar')){
+        if (!account?.scope?.includes('https://www.googleapis.com/auth/calendar')) {
           return '/register/connect-calendar/?error=permissions'
         }
         return true
       },
 
       async session({ session, user }) {
-        return{
+        return {
           ...session,
           user
         }
       }
-
+    }
   }
 }
 
-const handler = NextAuth(buildNextAuthOptions)
+// Define the GET and POST route handlers using the buildNextAuthOptions
+const handler = NextAuth(buildNextAuthOptions())
 
-export { handler as GET, handler as POST, buildNextAuthOptions }
+// Export the handlers for the route
+export { handler as GET, handler as POST }

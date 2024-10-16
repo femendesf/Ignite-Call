@@ -14,7 +14,7 @@ export async function PUT(req: NextRequest) {
 
     const { bio } = updateProfileBodySchema.parse(data);
 
-    const session = await getServerSession(buildNextAuthOptions);
+    const session = await getServerSession(buildNextAuthOptions());
    
     if(!session){
         return NextResponse.json({error: 'Usuário não autenticado'}, {status: 405});
