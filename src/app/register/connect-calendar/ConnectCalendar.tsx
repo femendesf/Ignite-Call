@@ -15,6 +15,7 @@ export default function ConnectCalendar(){
     const session =  useSession()
 
     const router = useRouter()
+    
     async function handleConnectCalendar(){
         await signIn('google')
     }

@@ -4,7 +4,11 @@ import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
 
 // Define the NextAuth options
 export const buildNextAuthOptions = (): NextAuthOptions => {
+  console.log('*****************buildNextAuthOptions*********************');
+
   return {
+
+    debug: true,
     adapter: PrismaAdapter(),
 
     providers: [
@@ -34,13 +38,16 @@ export const buildNextAuthOptions = (): NextAuthOptions => {
 
     callbacks: {
       async signIn({ account }) {
+
         if (!account?.scope?.includes('https://www.googleapis.com/auth/calendar')) {
+         
           return '/register/connect-calendar/?error=permissions'
         }
         return true
       },
 
       async session({ session, user }) {
+        
         return {
           ...session,
           user
@@ -53,5 +60,12 @@ export const buildNextAuthOptions = (): NextAuthOptions => {
 // Define the GET and POST route handlers using the buildNextAuthOptions
 const handler = NextAuth(buildNextAuthOptions())
 
-// Export the handlers for the route
-export { handler as GET, handler as POST }
+// App Router API format expects async functions for the methods
+export async function GET(req: Request) {
+
+  return handler(req)
+}
+
+export async function POST(req: Request) {
+  return handler(req)
+}
