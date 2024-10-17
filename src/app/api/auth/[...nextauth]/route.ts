@@ -1,6 +1,6 @@
-import { PrismaAdapter } from "@/lib/Auth/prisma-adapter"
-import NextAuth, { NextAuthOptions } from 'next-auth'
-import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
+import { PrismaAdapter } from "@/lib/Auth/prisma-adapter";
+import NextAuth, { NextAuthOptions } from "next-auth";
+import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 
 // Define the NextAuth options
 export const buildNextAuthOptions = (): NextAuthOptions => {
@@ -16,8 +16,8 @@ export const buildNextAuthOptions = (): NextAuthOptions => {
             prompt: 'consent',
             access_type: 'offline',
             response_type: 'code',
-            scope: 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
-          }
+            scope: 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+          },
         },
 
         profile(profile: GoogleProfile) {
@@ -27,31 +27,31 @@ export const buildNextAuthOptions = (): NextAuthOptions => {
             username: '',
             email: profile.email,
             avatar_url: profile.picture,
-          }
+          };
         },
-      })
+      }),
     ],
 
     callbacks: {
       async signIn({ account }) {
         if (!account?.scope?.includes('https://www.googleapis.com/auth/calendar')) {
-          return '/register/connect-calendar/?error=permissions'
+          return '/register/connect-calendar/?error=permissions';
         }
-        return true
+        return true;
       },
 
       async session({ session, user }) {
         return {
           ...session,
-          user
-        }
-      }
-    }
-  }
-}
+          user,
+        };
+      },
+    },
+  };
+};
 
-// Define the GET and POST route handlers using the buildNextAuthOptions
-const handler = NextAuth(buildNextAuthOptions())
+// Handler for NextAuth, passing in the options
+const handler = NextAuth(buildNextAuthOptions());
 
-// Export the handlers for the route
-export { handler as GET, handler as POST }
+// Correctly export the handler for GET and POST methods
+export { handler as GET, handler as POST };
