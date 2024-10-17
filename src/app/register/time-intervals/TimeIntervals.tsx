@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { NextSeo } from "next-seo";
 
+
 const timeIntervalsFormSchema = z.object({
     intervals: z.array(z.object({
         weekday: z.number().min(0).max(6),
