@@ -7,9 +7,10 @@ export const metadata = {
     title: 'Atualize seu perfil | Ignite Call'
 }
 
-export default async function TesteUpdate(){
+export default async function PageUpdateProfile(){
 
-    const session = await getServerSession(buildNextAuthOptions());
+    const authOptions = buildNextAuthOptions;
+    const session = await getServerSession(authOptions);
 
     if(!session){
         return (console.log('Usuário não autenticado'));
