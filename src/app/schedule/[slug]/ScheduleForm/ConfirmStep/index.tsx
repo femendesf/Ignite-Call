@@ -62,13 +62,26 @@ export function ConfirmStep({schedulingDate, onCancelConfirmation}: ConfirmStepP
 
             <label>
                 <Text size='sm'>Nome completo</Text>
-                <TextInput placeholder='Seu nome' {...register('name')}/>
+                <TextInput 
+                    placeholder='Seu nome'
+                    {...register('name')}
+                    crossOrigin=""
+                    onPointerEnterCapture={() => {}}
+                    onPointerLeaveCapture={() => {}}
+                />
                 {errors.name && (<FormError size='sm'>{errors.name.message}</FormError>)}
             </label>
 
             <label>
                 <Text size='sm'>Endereço de email</Text>
-                <TextInput type='email' placeholder='johndoe@gmail.com' {...register('email')}/>
+                <TextInput 
+                    type='email' 
+                    placeholder='johndoe@gmail.com' 
+                    {...register('email')}
+                    crossOrigin=""
+                    onPointerEnterCapture={() => {}}
+                    onPointerLeaveCapture={() => {}}
+                />
                 {errors.email && (<FormError size='sm'>{errors.email.message}</FormError>)}
             </label>
 

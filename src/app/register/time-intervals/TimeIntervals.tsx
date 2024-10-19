@@ -132,13 +132,27 @@ export default function TimeIntervals(){
                                     </IntervalDay>
             
                                     <IntervalInputs>
-                                        <TextInput size='sm' type='time' step={60}
-                                        disabled={intervals[index].enabled === false}
-                                        {...register(`intervals.${index}.startTime`)}/>
+                                        <TextInput 
+                                            size='sm' 
+                                            type='time' 
+                                            step={60}
+                                            disabled={intervals[index].enabled === false}
+                                            {...register(`intervals.${index}.startTime`)}
+                                            crossOrigin=""
+                                            onPointerEnterCapture={() => {}}
+                                            onPointerLeaveCapture={() => {}}
+                                        />
                                         
-                                        <TextInput size='sm' type='time' step={60} 
-                                        disabled={intervals[index].enabled === false}
-                                        {...register(`intervals.${index}.endTime`)}/>
+                                        <TextInput 
+                                            size='sm'
+                                            type='time'
+                                            step={60} 
+                                            disabled={intervals[index].enabled === false}
+                                            {...register(`intervals.${index}.endTime`)}
+                                            crossOrigin=""
+                                            onPointerEnterCapture={() => {}}
+                                            onPointerLeaveCapture={() => {}}
+                                        />
                                     </IntervalInputs>
                                 </IntervalItem>
                             )

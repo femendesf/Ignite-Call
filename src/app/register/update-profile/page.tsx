@@ -1,7 +1,8 @@
-import { buildNextAuthOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import { getServerSession } from "next-auth";
 import { UpdateProfile } from "./components/ComponentUpdateProfile";
 import React from "react";
+import { buildNextAuthOptions } from "@/utils/buildAuth";
 
 export const metadata = {
     title: 'Atualize seu perfil | Ignite Call'
@@ -9,8 +10,8 @@ export const metadata = {
 
 export default async function PageUpdateProfile(){
 
-    const authOptions = buildNextAuthOptions;
-    const session = await getServerSession(authOptions);
+
+    const session = await getServerSession(buildNextAuthOptions());
 
     if(!session){
         return (console.log('Usuário não autenticado'));

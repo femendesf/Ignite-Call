@@ -96,7 +96,13 @@ export default function Register(){
                 <Form as='form' onSubmit={handleSubmit(handleRegisterForm)}>
                     <label>
                         <Text size='sm'>Nome de usuário</Text>
-                        <TextInput prefix="ignite.com/" placeholder='seu-usuario' {...register('username')}/>
+                        <TextInput 
+                            prefix="ignite.com/" placeholder='seu-usuario' 
+                            {...register('username')}
+                            crossOrigin=""
+                            onPointerEnterCapture={() => {}}
+                            onPointerLeaveCapture={() => {}}
+                        />
                         
                         {errors.username && (
                             <FormError size='sm'>
@@ -108,7 +114,13 @@ export default function Register(){
 
                     <label>
                         <Text size='sm'>Nome completo</Text>
-                        <TextInput placeholder='Seu nome' {...register('name')}/>
+                        <TextInput 
+                        placeholder='Seu nome' 
+                        {...register('name')}
+                        crossOrigin=""
+                        onPointerEnterCapture={() => {}}
+                        onPointerLeaveCapture={() => {}}
+                        />
 
                         {errors.name && (
                             <FormError size='sm'>

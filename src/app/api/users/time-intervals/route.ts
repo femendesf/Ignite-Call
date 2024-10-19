@@ -1,8 +1,9 @@
 import { getServerSession } from "next-auth";
-import { buildNextAuthOptions } from "@/app/api/auth/[...nextauth]/route"; // Certifique-se de ajustar o caminho corretamente
+// Certifique-se de ajustar o caminho corretamente
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { buildNextAuthOptions } from "@/utils/buildAuth";
 
 const timeIntervalsBodySchema = z.object({
   intervals: z.array(
@@ -18,8 +19,7 @@ const timeIntervalsBodySchema = z.object({
 export async function POST(req: NextRequest) {
   const data = await req.json();
 
-  const authOptions = buildNextAuthOptions;
-  const session = await getServerSession({ req, ...authOptions }); // Passa o req como primeiro parâmetro
+  const session = await getServerSession(buildNextAuthOptions()); // Passa o req como primeiro parâmetro
 
   if (!session) {
     return NextResponse.json({ error: "Usuário não autenticado" }, { status: 401 });

@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 export function PrismaAdapter(): Adapter {
 
     return {
-       async createUser(user) {
+       async createUser(user: { name: string; email: string; avatar_url: string; username: string }) {
         const cookie = cookies()
         const userIdCookies = cookie.get('@ignitecall:userId')
 
@@ -137,7 +137,7 @@ export function PrismaAdapter(): Adapter {
 
       },
 
-      async linkAccount(account) {
+      async linkAccount(account: { userId: string; type: string; provider: string; providerAccountId: string; refresh_token?: string; access_token?: string; expires_at?: number; token_type?: string; scope?: string; id_token?: string; session_state?: string; }) {
         // Implementation to link an account to a user in your database
         await prisma.account.create({
           data:{

@@ -19,7 +19,7 @@ export default function Home() {
 
         <Container>
           <Hero>
-            <Heading size=''>Agendamento descomplicado</Heading>
+            <Heading size='sm'>Agendamento descomplicado</Heading>
             <Text size='xl'>
               Conecte seu calendário e permita que as pessoas marquem agendamentos no seu tempo livre.
             </Text>
