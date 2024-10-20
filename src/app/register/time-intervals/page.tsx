@@ -1,4 +1,5 @@
-import TimeIntervals from "./TimeIntervals";
+import { TimeIntervals } from "./components/TimeIntervals"
+
 
 export const metadata = {
     title: 'Selecione sua disponibilidade| Ignite Call'

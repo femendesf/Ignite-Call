@@ -1,7 +1,9 @@
 import { Roboto } from "next/font/google";
 import '../lib/dayjs'
-import ClientProviders from "./ClientProviders";
+
 import type { Metadata } from 'next'
+import { ClientProviders } from "./components/ClientProviders";
+
 
 const robotoNormal = Roboto({
   weight:['400', '500', '700'],

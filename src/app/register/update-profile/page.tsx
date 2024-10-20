@@ -1,4 +1,3 @@
-
 import { getServerSession } from "next-auth";
 import { UpdateProfile } from "./components/ComponentUpdateProfile";
 import React from "react";

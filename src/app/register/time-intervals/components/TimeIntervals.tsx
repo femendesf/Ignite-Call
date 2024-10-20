@@ -1,6 +1,6 @@
 'use client'
 import { Button, Checkbox, Heading, MultiStep, Text, TextInput } from "@ignite-ui/react";
-import { Container, Header } from "../styles";
+
 import { FormError, IntervalBox, IntervalContainer, IntervalDay, IntervalInputs, IntervalItem } from "./styles";
 import { ArrowRight } from "phosphor-react";
 import { Controller, Form, useFieldArray, useForm } from "react-hook-form";
@@ -12,6 +12,7 @@ import { api } from "@/lib/axios";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { NextSeo } from "next-seo";
+import { Container, Header } from "../../components/styles";
 
 
 const timeIntervalsFormSchema = z.object({
@@ -41,7 +42,7 @@ const timeIntervalsFormSchema = z.object({
 type TimeIntervalsFormInput = z.input<typeof timeIntervalsFormSchema>
 type TimeIntervalsFormOutput = z.output<typeof timeIntervalsFormSchema>
 
-export default function TimeIntervals(){
+export function TimeIntervals(){
 
     const {register, handleSubmit, control, watch, formState:{isSubmitting, errors}} = useForm<TimeIntervalsFormInput>({
         resolver: zodResolver(timeIntervalsFormSchema),

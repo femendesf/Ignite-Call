@@ -1,17 +1,18 @@
 'use client'
 
 import { Avatar, Button, Heading, MultiStep, Text, TextArea } from "@ignite-ui/react";
-import { Container, Header } from "../../styles";
+
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormAnnotation, ProfileBox } from "../styles";
+import { FormAnnotation, ProfileBox } from "./styles";
 import { Session } from "next-auth";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/navigation";
 import { NextSeo } from "next-seo";
 import React from "react";
+import { Container, Header } from "../../components/styles";
 
 const updateProfileSchema = z.object({
     bio: z.string(),

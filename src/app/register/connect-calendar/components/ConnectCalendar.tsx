@@ -1,16 +1,16 @@
 'use client'
 
 import { Button, Heading, MultiStep, Text} from "@ignite-ui/react";
-import { Container, Header } from "../styles";
 import { ArrowRight, Check } from "phosphor-react";
 import { AuthError, ConnectBox, ConnectItem } from "./styles";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { NextSeo } from "next-seo";
+import { Container, Header } from "../../components/styles";
 
 
-export default function ConnectCalendar(){
+export function ConnectCalendar(){
 
     const session =  useSession()
 

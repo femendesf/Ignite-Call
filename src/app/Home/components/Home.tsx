@@ -3,12 +3,13 @@
 import { Heading, Text } from "@ignite-ui/react"
 import Image from "next/image"
 import React from "react"
-import { Container, Hero, Preview } from "../styles"
-import { ClaimUsernameForm } from "./ClaimUsernameForm"
+
 import previewImage from '../../../assets/app-preview.png'
+import { Container, Hero, Preview } from "./styles"
+import { ClaimUsernameForm } from "./ClaimUsernameForm"
 
 
-export default function Home() {
+export function Home() {
 
     return (
     <>

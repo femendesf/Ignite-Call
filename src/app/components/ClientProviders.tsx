@@ -10,7 +10,7 @@ import { DefaultSeo } from "next-seo";
 
 globalStyles();
 
-export default function ClientProviders({ children }: { children: React.ReactNode }) {
+export function ClientProviders({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>

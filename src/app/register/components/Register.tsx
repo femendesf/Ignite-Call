@@ -27,7 +27,7 @@ const registerFormSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
 
-export default function Register(){
+export function Register(){
 
     // Adicionar mais validações e campos para o formulário de registro
     const {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, FormAnnotation } from "./styles";
+import { FormAnnotation, Form } from "./styles";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
