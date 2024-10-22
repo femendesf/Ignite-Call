@@ -5,12 +5,12 @@ import { ArrowRight, Check } from "phosphor-react";
 import { AuthError, ConnectBox, ConnectItem } from "./styles";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import { NextSeo } from "next-seo";
 import { Container, Header } from "../../components/styles";
 
 
-export function ConnectCalendar(){
+export function ConnectCalendar () {
 
     const session =  useSession()
 
@@ -33,8 +33,8 @@ export function ConnectCalendar(){
                 title="Conecte sua agenda do Google | Ignite Call"
                 noindex
             /> */}
-
-            <Container>
+            <Suspense fallback='Carregando...'>
+                <Container>
                 <Header>
                     <Heading as='strong'>
                         Conecte sua agenda!
@@ -81,6 +81,8 @@ export function ConnectCalendar(){
                 
 
             </Container>
+            </Suspense>
+            
         </>
     )
 }

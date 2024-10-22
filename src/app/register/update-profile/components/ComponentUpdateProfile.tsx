@@ -25,7 +25,7 @@ type UpdateProfileProps = {
 type UpdateProfileData = z.infer<typeof updateProfileSchema>
 
 
-export function UpdateProfile({session}: UpdateProfileProps){
+export function UpdateProfile ({session}: UpdateProfileProps) {
     
     const {avatar_url, name} = session.user
     const router = useRouter()
@@ -90,7 +90,7 @@ export function UpdateProfile({session}: UpdateProfileProps){
 
                     <label>
                         <Text size='sm'>Sobre você</Text>
-                        <TextArea placeholder='Seu nome' {...register('bio')} />
+                        <TextArea placeholder='' {...register('bio')} />
                         <FormAnnotation size='sm'>
                             Fale um pouco sobre você. Isto será exibido em sua página pessoal.
                         </FormAnnotation>

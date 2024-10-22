@@ -6,12 +6,13 @@ import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { AxiosError } from "axios";
 import { NextSeo } from "next-seo";
 import React from "react";
+import exp from "constants";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const registerFormSchema = z.object({
@@ -27,7 +28,7 @@ const registerFormSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
 
-export function Register(){
+export function Register() {
 
     // Adicionar mais validações e campos para o formulário de registro
     const {
@@ -79,62 +80,65 @@ export function Register(){
                 title="Crie uma conta | Ignite Call"
                 
             /> */}
-        
-            <Container>
-                <Header>
-                    <Heading as='strong'>
-                        Bem-vindo ao Ignite Call!
-                    </Heading>
 
-                    <Text>
-                        Precisamos de algumas informações para criar seu perfil! Ah, você pode editar essas informações depois.
-                    </Text>
+            <Suspense fallback={<div>Carregando...</div>}>
+                <Container>
+                    <Header>
+                        <Heading as='strong'>
+                            Bem-vindo ao Ignite Call!
+                        </Heading>
 
-                    <MultiStep size={4} currentStep={1}/>
-                </Header>
+                        <Text>
+                            Precisamos de algumas informações para criar seu perfil! Ah, você pode editar essas informações depois.
+                        </Text>
 
-                <Form as='form' onSubmit={handleSubmit(handleRegisterForm)}>
-                    <label>
-                        <Text size='sm'>Nome de usuário</Text>
-                        <TextInput 
-                            prefix="ignite.com/" placeholder='seu-usuario' 
-                            {...register('username')}
+                        <MultiStep size={4} currentStep={1}/>
+                    </Header>
+
+                    <Form as='form' onSubmit={handleSubmit(handleRegisterForm)}>
+                        <label>
+                            <Text size='sm'>Nome de usuário</Text>
+                            <TextInput 
+                                prefix="ignite.com/" placeholder='seu-usuario' 
+                                {...register('username')}
+                                crossOrigin=""
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}
+                            />
+                            
+                            {errors.username && (
+                                <FormError size='sm'>
+                                    {errors.username.message}
+                                </FormError>
+                            )}
+
+                        </label>
+
+                        <label>
+                            <Text size='sm'>Nome completo</Text>
+                            <TextInput 
+                            placeholder='Seu nome' 
+                            {...register('name')}
                             crossOrigin=""
                             onPointerEnterCapture={() => {}}
                             onPointerLeaveCapture={() => {}}
-                        />
-                        
-                        {errors.username && (
-                            <FormError size='sm'>
-                                {errors.username.message}
-                            </FormError>
-                        )}
+                            />
 
-                    </label>
+                            {errors.name && (
+                                <FormError size='sm'>
+                                    {errors.name.message}
+                                </FormError>
+                            )}
+                        </label>
 
-                    <label>
-                        <Text size='sm'>Nome completo</Text>
-                        <TextInput 
-                        placeholder='Seu nome' 
-                        {...register('name')}
-                        crossOrigin=""
-                        onPointerEnterCapture={() => {}}
-                        onPointerLeaveCapture={() => {}}
-                        />
-
-                        {errors.name && (
-                            <FormError size='sm'>
-                                {errors.name.message}
-                            </FormError>
-                        )}
-                    </label>
-
-                    <Button type='submit' disabled={isSubmitting} >
-                        Próximo passo
-                        <ArrowRight/>
-                    </Button>
-                </Form>
-            </Container>
+                        <Button type='submit' disabled={isSubmitting} >
+                            Próximo passo
+                            <ArrowRight/>
+                        </Button>
+                    </Form>
+                </Container>
+            </Suspense>
+            
         </>
     )
 }

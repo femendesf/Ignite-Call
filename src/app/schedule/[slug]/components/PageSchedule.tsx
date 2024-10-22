@@ -6,7 +6,7 @@ import { ScheduleForm } from "../ScheduleForm";
 import React from "react";
 import { NextSeo } from "next-seo";
 
-export function PageSchedule({user}: ScheduleProps){
+export function PageSchedule ({user}: ScheduleProps) {
     return(
         <>
             {/* <NextSeo
