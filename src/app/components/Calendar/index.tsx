@@ -1,3 +1,4 @@
+'use client'
 import { CaretLeft, CaretRight } from "phosphor-react";
 import { CalendarActions, CalendarBody, CalendarContainer, CalendarDay, CalendarHeader, CalendarTitle } from "./styles";
 import { getWeekDays } from "@/utils/get-week-days";

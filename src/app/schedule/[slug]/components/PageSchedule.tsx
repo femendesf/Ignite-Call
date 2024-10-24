@@ -3,10 +3,9 @@ import { Avatar, Heading, Text } from "@ignite-ui/react";
 import { Container, UserHeader } from "./styles";
 import { ScheduleProps } from "../page";
 import { ScheduleForm } from "../ScheduleForm";
-import React from "react";
-import { NextSeo } from "next-seo";
+// import { NextSeo } from "next-seo";
 
-export function PageSchedule ({user}: ScheduleProps) {
+const PageSchedule = ({user}: ScheduleProps) => {
     return(
         <>
             {/* <NextSeo
@@ -26,3 +25,5 @@ export function PageSchedule ({user}: ScheduleProps) {
         </>
     )
 }
+
+export default PageSchedule;

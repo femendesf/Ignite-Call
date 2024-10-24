@@ -2,14 +2,11 @@
 
 import { Heading, Text } from "@ignite-ui/react"
 import Image from "next/image"
-import React from "react"
-
 import previewImage from '../../../assets/app-preview.png'
 import { Container, Hero, Preview } from "./styles"
 import { ClaimUsernameForm } from "../ClaimUsernameForm"
 
-
-export function Home(){
+const Home = () => {
 
     return (
     <>
@@ -43,3 +40,5 @@ export function Home(){
       
     )
 }
+
+export default Home

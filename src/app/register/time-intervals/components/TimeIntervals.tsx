@@ -10,8 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { convertTimeStringToMinutes } from "@/utils/convert-time-to-minutes";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/navigation";
-import React from "react";
-import { NextSeo } from "next-seo";
+
+// import { NextSeo } from "next-seo";
 import { Container, Header } from "../../components/styles";
 
 
@@ -42,7 +42,7 @@ const timeIntervalsFormSchema = z.object({
 type TimeIntervalsFormInput = z.input<typeof timeIntervalsFormSchema>
 type TimeIntervalsFormOutput = z.output<typeof timeIntervalsFormSchema>
 
-export function TimeIntervals() {
+const TimeIntervals = () => {
 
     const {register, handleSubmit, control, watch, formState:{isSubmitting, errors}} = useForm<TimeIntervalsFormInput>({
         resolver: zodResolver(timeIntervalsFormSchema),
@@ -172,3 +172,5 @@ export function TimeIntervals() {
         </>
     )
 }
+
+export default TimeIntervals

@@ -5,12 +5,11 @@ import { ArrowRight, Check } from "phosphor-react";
 import { AuthError, ConnectBox, ConnectItem } from "./styles";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { Suspense } from "react";
-import { NextSeo } from "next-seo";
+import  { Suspense } from "react";
+//import { NextSeo } from "next-seo";
 import { Container, Header } from "../../components/styles";
 
-
-export function ConnectCalendar () {
+const ConnectCalendar = () => {
 
     const session =  useSession()
 
@@ -86,3 +85,5 @@ export function ConnectCalendar () {
         </>
     )
 }
+
+export default ConnectCalendar

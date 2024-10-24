@@ -1,12 +1,12 @@
-import React from "react";
+'use client'
 
-import { FormAnnotation, Form } from "./styles";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { Button, Text, TextInput } from "@ignite-ui/react";
+import { FormAnnotation, Form} from "./styles";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const claimUsernameFormSchema = z.object({
@@ -35,7 +35,6 @@ export function ClaimUsernameForm(){
     }
     return(
         <>
-      
             <Form as='form' onSubmit={handleSubmit(handleClaimUserForm)}>
                 <TextInput
                     size="sm"

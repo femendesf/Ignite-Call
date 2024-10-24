@@ -10,9 +10,7 @@ import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { AxiosError } from "axios";
-import { NextSeo } from "next-seo";
-import React from "react";
-import exp from "constants";
+// import { NextSeo } from "next-seo";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const registerFormSchema = z.object({
@@ -28,7 +26,7 @@ const registerFormSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
 
-export function Register() {
+const Register = () =>{
 
     // Adicionar mais validações e campos para o formulário de registro
     const {
@@ -142,3 +140,5 @@ export function Register() {
         </>
     )
 }
+
+export default Register

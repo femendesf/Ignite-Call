@@ -1,3 +1,4 @@
+'use client'
 import { Calendar } from "@/app/components/Calendar";
 import { Container, TimePicker, TimePickerHeader, TimePickerItem, TimePickerList } from "./styles";
 import { useState } from "react";

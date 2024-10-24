@@ -10,8 +10,7 @@ import { FormAnnotation, ProfileBox } from "./styles";
 import { Session } from "next-auth";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/navigation";
-import { NextSeo } from "next-seo";
-import React from "react";
+// import { NextSeo } from "next-seo";
 import { Container, Header } from "../../components/styles";
 
 const updateProfileSchema = z.object({
@@ -25,7 +24,7 @@ type UpdateProfileProps = {
 type UpdateProfileData = z.infer<typeof updateProfileSchema>
 
 
-export function UpdateProfile ({session}: UpdateProfileProps) {
+const UpdateProfile =  ({session}: UpdateProfileProps) => {
     
     const {avatar_url, name} = session.user
     const router = useRouter()
@@ -105,3 +104,5 @@ export function UpdateProfile ({session}: UpdateProfileProps) {
         </>
     )
 }
+
+export default UpdateProfile
