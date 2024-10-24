@@ -1,6 +1,4 @@
-import dynamic from "next/dynamic"
-
-const Home = dynamic(() => import('./home/PageHome'), { ssr: false })
+import { Home } from "./home/PageHome"
 
 export const metadata = {
     title: 'Descomplique sua agenda | Ignite Call',

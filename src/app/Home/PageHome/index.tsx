@@ -6,7 +6,7 @@ import previewImage from '../../../assets/app-preview.png'
 import { Container, Hero, Preview } from "./styles"
 import { ClaimUsernameForm } from "../ClaimUsernameForm"
 
-const Home = () => {
+export function Home () {
 
     return (
     <>
@@ -40,5 +40,3 @@ const Home = () => {
       
     )
 }
-
-export default Home
