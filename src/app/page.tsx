@@ -1,1 +1,1 @@
-export { default } from '../app/Home/page'
+export { default } from './home/page'

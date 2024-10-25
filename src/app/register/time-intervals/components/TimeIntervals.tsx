@@ -42,7 +42,7 @@ const timeIntervalsFormSchema = z.object({
 type TimeIntervalsFormInput = z.input<typeof timeIntervalsFormSchema>
 type TimeIntervalsFormOutput = z.output<typeof timeIntervalsFormSchema>
 
-const TimeIntervals = () => {
+export function TimeIntervals () {
 
     const {register, handleSubmit, control, watch, formState:{isSubmitting, errors}} = useForm<TimeIntervalsFormInput>({
         resolver: zodResolver(timeIntervalsFormSchema),
@@ -172,5 +172,3 @@ const TimeIntervals = () => {
         </>
     )
 }
-
-export default TimeIntervals

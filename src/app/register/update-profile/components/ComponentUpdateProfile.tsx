@@ -24,7 +24,7 @@ type UpdateProfileProps = {
 type UpdateProfileData = z.infer<typeof updateProfileSchema>
 
 
-const UpdateProfile =  ({session}: UpdateProfileProps) => {
+export function UpdateProfile ({session}: UpdateProfileProps) {
     
     const {avatar_url, name} = session.user
     const router = useRouter()
@@ -104,5 +104,3 @@ const UpdateProfile =  ({session}: UpdateProfileProps) => {
         </>
     )
 }
-
-export default UpdateProfile

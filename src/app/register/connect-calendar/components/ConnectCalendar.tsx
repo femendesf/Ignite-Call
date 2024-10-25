@@ -9,7 +9,7 @@ import  { Suspense } from "react";
 //import { NextSeo } from "next-seo";
 import { Container, Header } from "../../components/styles";
 
-const ConnectCalendar = () => {
+export function ConnectCalendar () {
 
     const session =  useSession()
 
@@ -85,5 +85,3 @@ const ConnectCalendar = () => {
         </>
     )
 }
-
-export default ConnectCalendar

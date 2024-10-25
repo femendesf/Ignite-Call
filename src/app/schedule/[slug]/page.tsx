@@ -1,8 +1,9 @@
 import { prisma } from "@/lib/prisma";
-import dynamic from "next/dynamic"
+// import dynamic from "next/dynamic"
 import { notFound } from 'next/navigation';
+import { PageSchedule } from "./components/PageSchedule";
 
-const PageSchedule = dynamic(() => import('./components/PageSchedule'), { ssr: false })
+// const PageSchedule = dynamic(() => import('./components/PageSchedule'), { ssr: false })
 
 export interface ScheduleProps {
   user: {
@@ -69,6 +70,7 @@ export default async function Schedule({ params }: { params: { slug: string } })
   return (
     <>
       <PageSchedule user={user as ScheduleProps["user"]} />
+      
     </>
   );
 }

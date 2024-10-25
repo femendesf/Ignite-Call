@@ -26,7 +26,7 @@ const registerFormSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
 
-const Register = () =>{
+export function Register () {
 
     // Adicionar mais validações e campos para o formulário de registro
     const {
@@ -79,7 +79,7 @@ const Register = () =>{
                 
             /> */}
 
-            <Suspense fallback={<div>Carregando...</div>}>
+            
                 <Container>
                     <Header>
                         <Heading as='strong'>
@@ -135,10 +135,8 @@ const Register = () =>{
                         </Button>
                     </Form>
                 </Container>
-            </Suspense>
+           
             
         </>
     )
 }
-
-export default Register

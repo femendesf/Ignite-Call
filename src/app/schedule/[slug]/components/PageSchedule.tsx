@@ -5,7 +5,7 @@ import { ScheduleProps } from "../page";
 import { ScheduleForm } from "../ScheduleForm";
 // import { NextSeo } from "next-seo";
 
-const PageSchedule = ({user}: ScheduleProps) => {
+export function PageSchedule ({user}: ScheduleProps)  {
     return(
         <>
             {/* <NextSeo
@@ -25,5 +25,3 @@ const PageSchedule = ({user}: ScheduleProps) => {
         </>
     )
 }
-
-export default PageSchedule;
