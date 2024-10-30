@@ -6,11 +6,10 @@ import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { AxiosError } from "axios";
-// import { NextSeo } from "next-seo";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const registerFormSchema = z.object({
@@ -26,7 +25,7 @@ const registerFormSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
 
-export function Register () {
+const Register = () => {
 
     // Adicionar mais validações e campos para o formulário de registro
     const {
@@ -140,3 +139,5 @@ export function Register () {
         </>
     )
 }
+
+export default Register

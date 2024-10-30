@@ -4,9 +4,10 @@ import { Heading, Text } from "@ignite-ui/react"
 import Image from "next/image"
 import previewImage from '../../../assets/app-preview.png'
 import { Container, Hero, Preview } from "./styles"
-import { ClaimUsernameForm } from "../ClaimUsernameForm"
+import dynamic from "next/dynamic"
+import ClaimUsernameForm from "../ClaimUsernameForm"
 
-export function Home () {
+const Home = () => {
 
     return (
     <>
@@ -40,3 +41,5 @@ export function Home () {
       
     )
 }
+
+export default dynamic (() => Promise.resolve(Home), {ssr: false}) 

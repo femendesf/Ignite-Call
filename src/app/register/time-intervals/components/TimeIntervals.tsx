@@ -3,7 +3,7 @@ import { Button, Checkbox, Heading, MultiStep, Text, TextInput } from "@ignite-u
 
 import { FormError, IntervalBox, IntervalContainer, IntervalDay, IntervalInputs, IntervalItem } from "./styles";
 import { ArrowRight } from "phosphor-react";
-import { Controller, Form, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 import { getWeekDays } from "@/utils/get-week-days";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +11,6 @@ import { convertTimeStringToMinutes } from "@/utils/convert-time-to-minutes";
 import { api } from "@/lib/axios";
 import { useRouter } from "next/navigation";
 
-// import { NextSeo } from "next-seo";
 import { Container, Header } from "../../components/styles";
 
 
@@ -42,7 +41,7 @@ const timeIntervalsFormSchema = z.object({
 type TimeIntervalsFormInput = z.input<typeof timeIntervalsFormSchema>
 type TimeIntervalsFormOutput = z.output<typeof timeIntervalsFormSchema>
 
-export function TimeIntervals () {
+const TimeIntervals = () => {
 
     const {register, handleSubmit, control, watch, formState:{isSubmitting, errors}} = useForm<TimeIntervalsFormInput>({
         resolver: zodResolver(timeIntervalsFormSchema),
@@ -172,3 +171,5 @@ export function TimeIntervals () {
         </>
     )
 }
+
+export default TimeIntervals

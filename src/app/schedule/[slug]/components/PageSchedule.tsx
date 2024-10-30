@@ -3,14 +3,11 @@ import { Avatar, Heading, Text } from "@ignite-ui/react";
 import { Container, UserHeader } from "./styles";
 import { ScheduleProps } from "../page";
 import { ScheduleForm } from "../ScheduleForm";
-// import { NextSeo } from "next-seo";
 
 export function PageSchedule ({user}: ScheduleProps)  {
     return(
         <>
-            {/* <NextSeo
-                title={`Agendar com ${user.name} | Ignite Call`}
-            /> */}
+          
 
             <Container>
                 <UserHeader>

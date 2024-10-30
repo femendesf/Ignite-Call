@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { Button, Text, TextInput } from "@ignite-ui/react";
 import { FormAnnotation, Form} from "./styles";
+import dynamic from "next/dynamic";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const claimUsernameFormSchema = z.object({
@@ -18,7 +19,7 @@ const claimUsernameFormSchema = z.object({
 
 type ClaimUsernameFormData= z.infer<typeof claimUsernameFormSchema>
 
-export function ClaimUsernameForm(){
+const ClaimUsernameForm = () =>{
 
     // Configura o formulário com os dados e validações
     const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<ClaimUsernameFormData>({
@@ -53,7 +54,7 @@ export function ClaimUsernameForm(){
             </Form>
 
             <FormAnnotation>
-            <Text size='sm'>
+            <Text as='span' size='sm'>
                 {errors.username ? errors.username.message : 'Digite o nome do usuário desejado'}
             </Text>
             </FormAnnotation>
@@ -61,3 +62,4 @@ export function ClaimUsernameForm(){
   
     )
 }
+export default dynamic (() => Promise.resolve(ClaimUsernameForm), {ssr: false}) 
