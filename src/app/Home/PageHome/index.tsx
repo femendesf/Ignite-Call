@@ -11,11 +11,6 @@ const Home = () => {
 
     return (
     <>
-        {/* <NextSeo
-          title="Descomplique sua agenda | Ignite Call"
-          description="Conecte seu calendário e permita que as pessoas marquem agendamentos no seu tempo livre."
-        /> */}
-
         <Container>
           <Hero>
             <Heading size='sm'>Agendamento descomplicado</Heading>
