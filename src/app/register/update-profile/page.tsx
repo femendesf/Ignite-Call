@@ -1,9 +1,7 @@
 import { getServerSession } from "next-auth";
 import React from "react";
 import { buildNextAuthOptions } from "@/utils/buildAuth";
-
-import dynamic from "next/dynamic"
-const UpdateProfile = dynamic(() => import('./components/ComponentUpdateProfile'), { ssr: false })
+import UpdateProfile from "./components/ComponentUpdateProfile";
 
 export const metadata = {
     title: 'Atualize seu perfil | Ignite Call'

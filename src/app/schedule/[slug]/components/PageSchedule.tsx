@@ -7,8 +7,6 @@ import { ScheduleForm } from "../ScheduleForm";
 export function PageSchedule ({user}: ScheduleProps)  {
     return(
         <>
-          
-
             <Container>
                 <UserHeader>
                     <Avatar src={user.avatar_url}/>

@@ -1,8 +1,8 @@
 import { PrismaAdapter } from "@/lib/Auth/prisma-adapter";
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 
-export function buildNextAuthOptions(): NextAuthOptions {
+ export function buildNextAuthOptions(): NextAuthOptions {
     return {
       adapter: PrismaAdapter(),
       providers: [
@@ -43,4 +43,4 @@ export function buildNextAuthOptions(): NextAuthOptions {
         },
       },
     };
-  }
+}

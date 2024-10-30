@@ -4,7 +4,6 @@ import { Heading, Text } from "@ignite-ui/react"
 import Image from "next/image"
 import previewImage from '../../../assets/app-preview.png'
 import { Container, Hero, Preview } from "./styles"
-import dynamic from "next/dynamic"
 import ClaimUsernameForm from "../ClaimUsernameForm"
 
 const Home = () => {

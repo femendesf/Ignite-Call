@@ -42,8 +42,6 @@ const ClaimUsernameForm = () =>{
                     prefix="ignite.com/"
                     placeholder='seu-usuario'
                     crossOrigin=""
-                    onPointerEnterCapture={() => {}}
-                    onPointerLeaveCapture={() => {}}
                     {...register('username')}
                 />
 

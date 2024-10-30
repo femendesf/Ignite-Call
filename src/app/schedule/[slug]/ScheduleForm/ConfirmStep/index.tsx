@@ -66,8 +66,7 @@ export function ConfirmStep({schedulingDate, onCancelConfirmation}: ConfirmStepP
                     placeholder='Seu nome'
                     {...register('name')}
                     crossOrigin=""
-                    onPointerEnterCapture={() => {}}
-                    onPointerLeaveCapture={() => {}}
+                  
                 />
                 {errors.name && (<FormError size='sm'>{errors.name.message}</FormError>)}
             </label>
@@ -79,8 +78,7 @@ export function ConfirmStep({schedulingDate, onCancelConfirmation}: ConfirmStepP
                     placeholder='johndoe@gmail.com' 
                     {...register('email')}
                     crossOrigin=""
-                    onPointerEnterCapture={() => {}}
-                    onPointerLeaveCapture={() => {}}
+                   
                 />
                 {errors.email && (<FormError size='sm'>{errors.email.message}</FormError>)}
             </label>

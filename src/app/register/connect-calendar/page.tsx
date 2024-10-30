@@ -1,7 +1,4 @@
- import dynamic from "next/dynamic"
-
-
- const ConnectCalendar = dynamic(() => import('./components/ConnectCalendar'), { ssr: false })
+import ConnectCalendar from "./components/ConnectCalendar"
 
 export const metadata = {
     title: 'Conecte sua agenda do Google | Ignite Call'

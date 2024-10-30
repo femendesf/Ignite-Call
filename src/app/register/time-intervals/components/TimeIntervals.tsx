@@ -139,8 +139,7 @@ const TimeIntervals = () => {
                                             disabled={intervals[index].enabled === false}
                                             {...register(`intervals.${index}.startTime`)}
                                             crossOrigin=""
-                                            onPointerEnterCapture={() => {}}
-                                            onPointerLeaveCapture={() => {}}
+                                            
                                         />
                                         
                                         <TextInput 
@@ -150,8 +149,7 @@ const TimeIntervals = () => {
                                             disabled={intervals[index].enabled === false}
                                             {...register(`intervals.${index}.endTime`)}
                                             crossOrigin=""
-                                            onPointerEnterCapture={() => {}}
-                                            onPointerLeaveCapture={() => {}}
+                                           
                                         />
                                     </IntervalInputs>
                                 </IntervalItem>

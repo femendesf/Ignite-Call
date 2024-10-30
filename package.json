@@ -20,8 +20,8 @@
     "axios": "^1.7.2",
     "dayjs": "^1.11.13",
     "googleapis": "^144.0.0",
-    "next": "^14.0.1",
-    "next-auth": "^4.24.7",
+    "next": "^15.0.2",
+    "next-auth": "^4.24.10",
     "next-seo": "^6.6.0",
     "nookies": "^2.5.2",
     "phosphor-react": "^1.4.1",
@@ -29,6 +29,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.52.1",
     "vercel": "^37.8.0",
+    "webpack": "^5.95.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
