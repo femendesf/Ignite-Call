@@ -15,7 +15,6 @@ export async function PUT(req: NextRequest) {
 
     const { bio } = updateProfileBodySchema.parse(data);
 
-
     const session = await getServerSession(buildNextAuthOptions())
    
     if(!session){
