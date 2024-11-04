@@ -1,6 +1,5 @@
 import { prisma } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
  
 export async function POST(req: NextRequest) {
 
@@ -23,11 +22,11 @@ export async function POST(req: NextRequest) {
     }
   })
 
-  // Setando o cookie de usuário
-  cookies().set('@ignitecall:userId', user.id,{
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+  const response = NextResponse.json(data, { status: 200 })
+  response.cookies.set('@ignitecall:userId', user.id, {
+    maxAge: 60 * 60 * 24 * 7, // 7 dias
     path: '/',
   })
-  
-  return NextResponse.json(data, { status: 200 })
+
+  return response
 }

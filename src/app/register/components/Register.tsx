@@ -6,7 +6,7 @@ import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { AxiosError } from "axios";
@@ -25,7 +25,8 @@ const registerFormSchema = z.object({
 
 type RegisterFormData = z.infer<typeof registerFormSchema>
 
-const Register = () => {
+
+const RegisterComponent = () => {
 
     // Adicionar mais validações e campos para o formulário de registro
     const {
@@ -138,4 +139,11 @@ const Register = () => {
     )
 }
 
+const Register = () =>{
+    return(
+        <Suspense fallback={<div>Carregando...</div>}>
+            <RegisterComponent/>
+        </Suspense>
+    )
+}
 export default Register

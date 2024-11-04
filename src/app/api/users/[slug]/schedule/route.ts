@@ -5,10 +5,11 @@ import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-export async function POST(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<Record<string, string>> }) {
     
-    const username = params.slug;
-
+    const resolvedParams = await params;
+    const username = resolvedParams.slug;
+    
     const user = await prisma.user.findUnique({
         where: {
             username,

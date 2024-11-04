@@ -6,8 +6,9 @@ import { AuthError, ConnectBox, ConnectItem } from "./styles";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Container, Header } from "../../components/styles";
+import { Suspense } from "react";
 
-const ConnectCalendar = () => {
+const ConnectCalendarComponent = () => {
 
     const session =  useSession()
 
@@ -26,9 +27,7 @@ const ConnectCalendar = () => {
 
     return(
         <> 
-           
-           
-                <Container>
+            <Container>
                 <Header>
                     <Heading as='strong'>
                         Conecte sua agenda!
@@ -78,6 +77,14 @@ const ConnectCalendar = () => {
           
             
         </>
+    )
+}
+
+const ConnectCalendar = () => {
+    return(
+        <Suspense fallback={<div>Carregando...</div>}>
+            <ConnectCalendarComponent/>
+        </Suspense>
     )
 }
 

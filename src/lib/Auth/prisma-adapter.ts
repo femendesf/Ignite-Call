@@ -6,7 +6,7 @@ export function PrismaAdapter(): Adapter {
 
     return {
        async createUser(user: { name: string; email: string; avatar_url: string; username: string }) {
-        const cookie = cookies()
+        const cookie = await cookies()
         const userIdCookies = cookie.get('@ignitecall:userId')
 
         if(!userIdCookies){throw new Error('User ID not found on cookies.')}

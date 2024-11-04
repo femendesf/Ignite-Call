@@ -2,9 +2,10 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }){
+export async function GET(req: NextRequest, { params }: { params: Promise<Record<string, string>> }){
 
-    const username = params.slug;
+    const resolvedParams = await params;
+    const username = resolvedParams.slug;
     const searchParams = req.nextUrl.searchParams;
 
     const year = searchParams.get('year')  
