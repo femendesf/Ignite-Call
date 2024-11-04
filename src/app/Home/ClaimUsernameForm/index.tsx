@@ -60,4 +60,4 @@ const ClaimUsernameForm = () =>{
   
     )
 }
-export default dynamic (() => Promise.resolve(ClaimUsernameForm), {ssr: false}) 
+export default ClaimUsernameForm
