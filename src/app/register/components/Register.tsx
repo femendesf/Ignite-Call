@@ -100,7 +100,8 @@ const RegisterComponent = () => {
                                 prefix="ignite.com/" placeholder='seu-usuario' 
                                 {...register('username')}
                                 crossOrigin=""
-                                
+                                onPointerEnterCapture={() => {}}
+                                onPointerLeaveCapture={() => {}}
                             />
                             
                             {errors.username && (
@@ -117,7 +118,8 @@ const RegisterComponent = () => {
                             placeholder='Seu nome' 
                             {...register('name')}
                             crossOrigin=""
-                           
+                            onPointerEnterCapture={() => {}}
+                            onPointerLeaveCapture={() => {}}
                             />
 
                             {errors.name && (

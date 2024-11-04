@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { Button, Text} from "@ignite-ui/react";
+import { Button, Text, TextInput} from "@ignite-ui/react";
 import { FormAnnotation, Form} from "./styles";
 import dynamic from "next/dynamic";
 
@@ -37,11 +37,13 @@ const ClaimUsernameForm = () =>{
     return(
         <>
             <Form as='form' onSubmit={handleSubmit(handleClaimUserForm)}>
-                <input
-                   
+                <TextInput
+                    size='sm'
                     prefix="ignite.com/"
                     placeholder='seu-usuario'
-                   
+                    crossOrigin="anonymous"
+                    onPointerEnterCapture={() => {}}
+                    onPointerLeaveCapture={() => {}}
                     {...register('username')}
                 />
 
