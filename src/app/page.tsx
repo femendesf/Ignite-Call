@@ -1,4 +1,4 @@
-import Home from "./home/PageHome"
+import Home from "./home/PageHome/index"
 
 export const metadata = {
     title: 'Descomplique sua agenda | Ignite Call',
