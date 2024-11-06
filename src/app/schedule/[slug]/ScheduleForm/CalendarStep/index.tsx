@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { useParams } from "next/navigation";
 import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
+import { D } from "@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o";
 
 interface Availability {
   possibleTimes: number[];
@@ -37,7 +38,8 @@ export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
     queryFn: async () => {
       const response = await api.get(`/users/${username}/availability`,{
           params:{
-            date: selectedDateWithoutTime
+            date: selectedDateWithoutTime,
+            timezoneOffset: selectedDate ? selectedDate.getTimezoneOffset() : 0
           }
       })
       return response.data

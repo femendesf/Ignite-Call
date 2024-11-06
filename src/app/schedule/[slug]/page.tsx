@@ -9,11 +9,6 @@ export interface ScheduleProps {
     avatar_url: string;
   };
 }
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
 
 export async function generateMetadata({ params }: {params: Promise<{slug: string}>}) {
 

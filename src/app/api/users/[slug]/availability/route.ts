@@ -1,7 +1,9 @@
 import { prisma } from "@/lib/prisma";
 import dayjs from "dayjs";
 import { NextRequest, NextResponse } from "next/server";
+import utc from "dayjs/plugin/utc";
 
+dayjs.extend(utc);
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<Record<string, string>> }
@@ -10,20 +12,29 @@ export async function GET(
   const username = resolvedParams.slug;
   const searchParams = req.nextUrl.searchParams;
   const date = searchParams.get("date");
+  const timezoneOffset = searchParams.get("timezoneOffset");
 
-  if (!date) {
-    return NextResponse.json({ error: "Date not provided" }, { status: 405 });
+  console.log(`TIMEZONE: ********************${timezoneOffset}*********************`);
+
+  if (!date || !timezoneOffset) {
+    return NextResponse.json({ error: "Date or TimezoneOffSet not provided" }, { status: 405 });
   }
 
   const user = await prisma.user.findUnique({
     where: { username },
   });
 
+  const timezoneOffsetInHours = typeof timezoneOffset === 'string' ? Number(timezoneOffset) / 60 : Number(timezoneOffset[0]) / 60;
+  
+
   if (!user) {
-    return NextResponse.json({ error: "User not found" }, { status: 404 });
+    return NextResponse.json({ error: "User not foun" }, { status: 404 });
   }
 
-  const referenceDate = dayjs(String(date));
+  const referenceDate = dayjs(String(date));  
+
+  const referenceDateTimeZoneOffsetInHours = referenceDate.toDate().getTimezoneOffset() / 60;
+
   const isPastDate = referenceDate.endOf("day").isBefore(new Date());
 
   if (isPastDate) {
@@ -56,21 +67,37 @@ export async function GET(
     where: {
       user_id: user.id,
       date: {
-        gte: referenceDate.startOf("day").toDate(),
-        lte: referenceDate.endOf("day").toDate(),
+        gte: referenceDate.set("hour", startHour).add(timezoneOffsetInHours, 'hour').toDate(),  
+        lte: referenceDate.set("hour", endHour).add(timezoneOffsetInHours, 'hour').toDate(),
       },
     },
   });
 
   const availableTimes = possibleTimes.filter((time) => {
     const isTimeBlocked = blockedTimes.some(
-      (blockedTime) => blockedTime.date.getHours() === time
+      (blockedTime) => blockedTime.date.getUTCHours() - timezoneOffsetInHours === time
     );
 
-    const isTimeInPast = referenceDate.set("hour", time).isBefore(new Date());
+    const isTimeInPast = referenceDate
+    .set("hour", time)
+    .subtract(referenceDateTimeZoneOffsetInHours, 'hour')
+    .isBefore(dayjs().utc().subtract(timezoneOffsetInHours, 'hour'));
 
     return !isTimeBlocked && !isTimeInPast;
   });
 
   return NextResponse.json({ possibleTimes, availableTimes }, { status: 200 });
 }
+
+// const blockedTimes = await prisma.scheduling.findMany({
+//   select: {
+//     date: true,
+//   },
+//   where: {
+//     user_id: user.id,
+//     date: {
+//       gte: referenceDate.startOf("day").toDate(),
+//       lte: referenceDate.endOf("day").toDate(),
+//     },
+//   },
+// });

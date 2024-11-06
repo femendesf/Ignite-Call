@@ -1,7 +1,7 @@
 'use client'
 
 import { Roboto } from 'next/font/google'
-
+import dayjs from 'dayjs'
 import { globalStyles } from '@/styles/global'
 import { ClientProviders } from './components/ClientProviders'
 const robotoNormal = Roboto({ 
@@ -10,7 +10,7 @@ const robotoNormal = Roboto({
 })
 
 globalStyles()
-
+dayjs.locale('pt-br')
 export default function RootLayout({
   children,
 }: {
