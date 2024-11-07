@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/axios";
 import { useParams } from "next/navigation";
+import 'dayjs/locale/pt-br';
 
 interface CalendarWeek{
     week: number,
@@ -27,7 +28,7 @@ interface CalendarProps{
     onDateSelected: (date: Date) => void;
 }
 
-
+dayjs.locale('pt-br');
 export function Calendar({selectedDate, onDateSelected} : CalendarProps){
 
     const [currentDate, setCurrentDate] = useState(()=>{
