@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { Button, Text, TextInput} from "@ignite-ui/react";
 import { FormAnnotation, Form} from "./styles";
-import dynamic from "next/dynamic";
 
 // Define o esquema do formulário de reserva de nome de usuário
 const claimUsernameFormSchema = z.object({
@@ -34,6 +33,7 @@ const ClaimUsernameForm = () =>{
         const { username} = data
         await router.push(`/register?username=${username}`)
     }
+    
     return(
         <>
             <Form as='form' onSubmit={handleSubmit(handleClaimUserForm)}>

@@ -4,7 +4,7 @@ import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 
  export function buildNextAuthOptions(): NextAuthOptions {
     return {
-      adapter: PrismaAdapter(),
+      adapter: PrismaAdapter(), // Para usar o banco de dados do prisma na autenticação
       providers: [
         GoogleProvider({
           clientId: process.env.GOOGLE_CLIENT_ID ?? '',
