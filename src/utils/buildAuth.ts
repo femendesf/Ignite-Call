@@ -25,7 +25,7 @@ import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
               email: profile.email,
               avatar_url: profile.picture,
             };
-          },
+          }, // Para pegar as informações do usuário do google, pois a API do google não retorna o avatar_url
         }),
       ],
       callbacks: {
